@@ -9,16 +9,27 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
+
+    <ImageView
+        android:id="@+id/imageview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background2"/>
+    <ImageView
+        android:id="@+id/imageview2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background2"/>
     <com.romainpiel.titanic.library.TitanicTextView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/dummy_content"
         android:textColor="#212121"
-        android:textSize="50sp"
+        android:textSize="35sp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:textStyle="bold" />
