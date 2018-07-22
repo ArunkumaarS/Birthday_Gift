@@ -1,6 +1,9 @@
 package com.hundredbees.app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +15,8 @@ import android.view.WindowManager;
 
 import com.romainpiel.titanic.library.Titanic;
 import com.romainpiel.titanic.library.TitanicTextView;
+
+import java.io.IOException;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -91,8 +96,29 @@ public class SplashscreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Music Player
+        final MediaPlayer player = new MediaPlayer();
+        //Asset file Descriptor
+        AssetFileDescriptor afd;
+        try {
+// Read the music file from the asset folder
+            String music = "Music.mp3";
+            afd = getAssets().openFd(music);
+// Creation of new media player;
+//            player = new MediaPlayer();
+// Set the player music source.
+            player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(),afd.getLength());
+// Set the looping and play the music.
+            player.setLooping(true);
+            player.prepare();
+            player.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+//No title view
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//FLAG For fullscreen view
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -115,7 +141,31 @@ public class SplashscreenActivity extends AppCompatActivity {
             public void onClick(View view) {
                 toggle();
             }
+
+
         });
+
+        new Handler().postDelayed(new Runnable() {
+
+// Using handler with postDelayed called runnable run method
+
+            @Override
+
+            public void run() {
+
+                Intent i = new Intent(SplashscreenActivity.this, MainActivity.class);
+
+                startActivity(i);
+
+                // close this activity
+                //Stop the music player
+                player.stop();
+                finish();
+
+            }
+
+        }, 15*1000);
+
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
