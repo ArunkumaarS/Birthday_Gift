@@ -12,11 +12,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.romainpiel.titanic.library.Titanic;
 import com.romainpiel.titanic.library.TitanicTextView;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -102,7 +105,7 @@ public class SplashscreenActivity extends AppCompatActivity {
         AssetFileDescriptor afd;
         try {
 // Read the music file from the asset folder
-            String music = "Music.mp3";
+            String music = "SeaWaves.mp3";
             afd = getAssets().openFd(music);
 // Creation of new media player;
 //            player = new MediaPlayer();
@@ -124,12 +127,31 @@ public class SplashscreenActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
 
+        ImageView imageView = findViewById(R.id.imageview1);
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
+        mContentView = findViewById(R.id.titanicTextView);
 
-        TitanicTextView textView = (TitanicTextView) findViewById(R.id.fullscreen_content);
+        TitanicTextView textView = (TitanicTextView) findViewById(R.id.titanicTextView);
+        //Dynamically Load BackGround Image and Text
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMdd");
+        SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH");
+        int currentDate = Integer.parseInt(simpleDateFormat.format(new Date()));
+        int currentTime = Integer.parseInt(simpleTimeFormat.format(new Date()));
+        if(currentDate == 1024){
 
+        }else {
+            if(currentTime < 6 || currentTime >= 20) {
+                imageView.setBackgroundResource(R.drawable.splashscreennight);
+                textView.setText(R.string.night);
+            }else if(currentTime >=6 || currentTime <= 16 ){
+                imageView.setBackgroundResource(R.drawable.splashscreenmorning);
+                textView.setText(R.string.morning);
+            }else if(currentTime >=17 || currentTime <= 19 ){
+                imageView.setBackgroundResource(R.drawable.splashscreenevening);
+                textView.setText(R.string.evening);
+            }
+        }
         // set fancy typeface
         textView.setTypeface(Typefaces.get(this, "Satisfy-Regular.ttf"));
 
