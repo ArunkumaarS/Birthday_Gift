@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.romainpiel.titanic.library.Titanic;
@@ -152,6 +154,13 @@ public class SplashscreenActivity extends AppCompatActivity {
                 textView.setText(R.string.evening);
             }
         }
+
+       Animation fadeIn = AnimationUtils.loadAnimation(this,R.anim.fade_in);
+        ImageView hundred = findViewById(R.id.hundred);
+        ImageView bee = findViewById(R.id.bee);
+        hundred.startAnimation(fadeIn);
+        bee.startAnimation(fadeIn);
+
         // set fancy typeface
         textView.setTypeface(Typefaces.get(this, "Satisfy-Regular.ttf"));
 

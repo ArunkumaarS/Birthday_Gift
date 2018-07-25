@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">24/10</string>
+    <!-- Splash Screen Activity Values -->
     <string name="morning">Good Morning...</string>
     <string name="evening">Good Evening...</string>
     <string name="night">Good Night..</string>
+    <!-- End Of Splash Screen Activity Values -->
 </resources>
