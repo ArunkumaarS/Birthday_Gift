@@ -146,7 +146,7 @@ public class SplashscreenActivity extends AppCompatActivity {
             if(currentTime < 6 || currentTime >= 20) {
                 imageView.setBackgroundResource(R.drawable.splashscreennight);
                 textView.setText(R.string.night);
-            }else if(currentTime >=6 || currentTime <= 16 ){
+            }else if(currentTime <= 16 ){
                 imageView.setBackgroundResource(R.drawable.splashscreenmorning);
                 textView.setText(R.string.morning);
             }else if(currentTime >=17 || currentTime <= 19 ){

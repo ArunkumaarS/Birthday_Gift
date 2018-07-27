@@ -20,11 +20,11 @@ import java.util.Map;
 
         @Override
         public void onMessageReceived(RemoteMessage message) {
-            sendMyNotification(message.getNotification().getBody());
+            sendMyNotification(message.getNotification().getBody(),message.getNotification().getTitle());
         }
 
 
-        private void sendMyNotification(String message) {
+        private void sendMyNotification(String message, String title) {
 
             //On click of notification it redirect to this Activity
             Intent intent = new Intent(this, SplashscreenActivity.class);
@@ -34,9 +34,9 @@ import java.util.Map;
             Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                     .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentTitle("My Firebase Push notification")
+                    .setContentTitle(title)
                     .setContentText(message)
-                    .setAutoCancel(true)
+                    .setAutoCancel(false)
                     .setSound(soundUri)
                     .setContentIntent(pendingIntent);
 
