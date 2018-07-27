@@ -196,7 +196,10 @@ public class SplashscreenActivity extends AppCompatActivity {
             }
 
         }, 15*1000);
-
+      /*  Animation downToUp = AnimationUtils.loadAnimation(this,R.anim.downtoup);
+        hundred.startAnimation(downToUp);
+        bee.startAnimation(downToUp);
+        textView.startAnimation(downToUp);*/
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away

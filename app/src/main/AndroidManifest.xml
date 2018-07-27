@@ -25,18 +25,20 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@anim/fade_in" />
-        <service
-            android:name=".FireBaseMessagingService">
+
+        <service android:name=".FireBaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".FireBaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".FireBaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".NotificationActivity"></activity>
     </application>
 
 </manifest>

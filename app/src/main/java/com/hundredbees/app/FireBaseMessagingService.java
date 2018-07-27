@@ -1,9 +1,7 @@
 package com.hundredbees.app;
 
 import android.app.PendingIntent;
-import android.util.Log;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -12,11 +10,8 @@ import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.google.android.gms.common.internal.Constants;
 
-import java.util.Map;
-
-    public class FireBaseMessagingService extends FirebaseMessagingService {
+public class FireBaseMessagingService extends FirebaseMessagingService {
 
         @Override
         public void onMessageReceived(RemoteMessage message) {
@@ -27,7 +22,7 @@ import java.util.Map;
         private void sendMyNotification(String message, String title) {
 
             //On click of notification it redirect to this Activity
-            Intent intent = new Intent(this, SplashscreenActivity.class);
+            Intent intent = new Intent(this, NotificationActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
