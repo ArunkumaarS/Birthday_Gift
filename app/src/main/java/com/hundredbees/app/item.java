@@ -1,9 +1,12 @@
 package com.hundredbees.app;
 
+import android.widget.Button;
+
 public class item {
     int background;
     int profilepic;
     String profileName;
+    Button button;
 
     public item() {
     }
@@ -36,5 +39,20 @@ public class item {
 
     public void setProfileName(String profileName) {
         this.profileName = profileName;
+    }
+
+    public item(int background, int profilepic, String profileName, Button button) {
+        this.background = background;
+        this.profilepic = profilepic;
+        this.profileName = profileName;
+        this.button = button;
+    }
+
+    public Button getButton() {
+        return button;
+    }
+
+    public void setButton(Button button) {
+        this.button = button;
     }
 }

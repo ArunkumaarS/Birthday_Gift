@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //Notification buttuon
-        Button notificationButtion = findViewById(R.id.notificationbutton);
+        ImageButton notificationButtion = findViewById(R.id.notificationbutton);
         notificationButtion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,5 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
+
+     void buttonClick(View view){
+         TextView textView = findViewById(R.id.profilename);
+         Toast.makeText(MainActivity.this,textView.getText(),Toast.LENGTH_LONG).show();
+     }
 }
