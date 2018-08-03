@@ -43,6 +43,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(mcoContext,SecondActivity.class);
+                i.putExtra("Name",mData.get(position).getProfileName());
                 mcoContext.startActivity(i);
 
                 Toast.makeText(mcoContext,mData.get(position).getProfileName(),Toast.LENGTH_LONG).show();
